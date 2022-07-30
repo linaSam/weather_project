@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Work: week 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="workshop_2_FP.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <form id="city-form">
+                <input class="search_bar" id="city-input" type="text" value="Please, enter name of the city">
+                <input class="submit_button" type="submit" value="Search">
+            </form> 
+            <div class="row">
+                <div class="col">
+                    <span class="big_image">
+                        ☁️
+                    </span>
+                </div>
+                <div class="col">
+                    <p class="weather"></p>
+                        <span class="type_weather">
+                            <strong>
+                                Cloudy
+                            </strong> 
+                        </span>
+                        <span class="details_weather">
+                            Wind 10 m/s
+                                <br />
+                            Humidity 25%
+                        </span>
+                </div>
+                <div class="col">
+                    <div class="current_info">
+                        <h1>
+                            <strong id="place">
+                                Kyiv, Ukraine
+                            </strong>
+                        </h1>
+                        <span class="temperature">
+                            <span id="tempNumber">
+                                18°
+                            </span>
+                            <span id="celsius">
+                                С
+                            </span>
+                            |
+                            <span id="fahrenheit">
+                                F
+                            </span>
+                        </span>
+                        <span>
+                            <h4 class="date">
+                                Sunday, 6/19/22
+                            </h4>
+                        </span>
+                    </div>
+                </div>     
+            <div class="prognosis">
+                <div class="row">
+                    <div class="col">
+                        Monday
+                        <br />
+                        ☀️
+                    </div>
+                    <div class="col">
+                        Tuesday
+                        <br />
+                        ☁️
+                    </div>
+                    <div class="col">
+                        Wednesday
+                        <br />
+                        ☁️
+                    </div>
+                    <div class="col">
+                        Thursday
+                        <br />
+                        ☀️
+                    </div>
+                    <div class="col">
+                        Friday
+                        <br />
+                        🌧
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <script>
+
+        // Shows current date
+        
+        let now = new Date();
+        let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+        ];
+
+        let link = document.querySelector(".date");
+        link.innerHTML = `${days[now.getDay()]} ${now.getHours()}:${now.getMinutes()}`;
+       
+
+        function tempInfo(response) {
+            document.querySelector("#place").innerHTML = response.data.name;
+            document.querySelector("#tempNumber").innerHTML = Math.round(response.data.main.temp);
+        }
+
+        function findCity(city) {
+            let apiKey = "2da922df24791569065ef01a6ccbef01"
+            let apiCity =
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+            axios.get(apiCity).then(tempInfo);
+        }
+
+        function submitCity(event) {
+            event.preventDefault();
+             let city = document.querySelector("#city-input").value;
+            findCity(city);
+        }
+
+        let cityInfo = document.querySelector("#city-form");
+        cityInfo.addEventListener("submit", submitCity);
+
+        findCity("London");
+
+    </script>
+</body>
+</html>

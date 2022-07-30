@@ -1,0 +1,101 @@
+.box {
+  padding: 20px 40px;
+  margin: 30px 120px;
+  background-color: #e3f0f1e4;
+  border: 1px solid gainsboro;
+  font-family: "Montserrat", sans-serif;
+}
+
+form {
+  padding: 10px;
+}
+
+.search_bar {
+  background-color: #f8fcff;
+  width: 250px;
+  border: 1px solid;
+  border-radius: 7px;
+}
+
+.submit_button {
+  background-color: rgb(174, 225, 208);
+  border: 1px solid;
+  border-radius: 7px;
+}
+
+.current_info {
+  text-align: right;
+}
+
+.weather {
+  position: relative;
+  left: 0;
+}
+
+.big_image {
+  font-size: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#place {
+  color: #006ec5;
+  font-weight: 100px;
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.temperature {
+  color: #5a6275;
+  font-size: 40px;
+}
+
+.date {
+  color: #006ec5;
+  font-size: 15px;
+}
+
+.type_weather {
+  color: #5a6275;
+  font-size: 40px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0;
+}
+
+.details_weather {
+  color: #939aa9;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 0;
+}
+
+.prognosis {
+  border: 1px solid;
+  border-radius: 7px;
+  padding: 5px 0px 5px 10px;
+  text-align: center;
+  background-color: #f8fcff;
+}
+
+#celsius {
+  transition: all 200ms ease-in-out;
+}
+
+#celsius:hover {
+  color: #006ec5;
+  opacity: 0.8;
+}
+
+#fahrenheit {
+  transition: all 200ms ease-in-out;
+}
+
+#fahrenheit:hover {
+  color: #006ec5;
+  opacity: 0.8;
+}
