@@ -34,7 +34,35 @@ function submitCity(event) {
   findCity(city);
 }
 
+        
+function showFahrenheit(event) {
+    event.preventDefault();
+    let temperatureElement = document.querySelector(".tempNumber");
+
+    celsiusSign.classList.remove("active");
+    fahrenheitSign.classList.add("active");
+    let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+}
+
+function showCelsius(event) {
+    event.preventDefault();
+    celsiusSign.classList.add("active");
+    fahrenheitSign.classList.remove("active");
+    let temperatureElement = document.querySelector(".tempNumber");
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+
+let celsiusTemperature = null;
+
 let cityInfo = document.querySelector("#city-form");
 cityInfo.addEventListener("submit", submitCity);
 
-findCity("London");
+let fahrenheitSign = document.querySelector("#fahrenheit");
+fahrenheitSign.addEventListener("click", showFahrenheit);
+
+let celsiusSign = document.querySelector("#celsius"); celsiusSign.addEventListener("click", showCelsius);
+
+findCity("Kyiv");
