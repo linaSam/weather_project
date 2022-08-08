@@ -15,11 +15,16 @@ let link = document.querySelector(".date");
 link.innerHTML = `${days[now.getDay()]} ${now.getHours()}:${now.getMinutes()}`;
 
 function tempInfo(response) {
-    document.querySelector("#place").innerHTML = response.data.name;
-    document.querySelector("#tempNumber").innerHTML = Math.round(response.data.main.temp);
-    
-    let iconElement = document.querySelector("#big_image");
-    iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  celsiusTemperature = response.data.main.temp;
+  document.querySelector("#place").innerHTML = response.data.name;
+  document.querySelector("#tempNumber").innerHTML =
+    Math.round(celsiusTemperature);
+
+  let iconElement = document.querySelector("#big_image");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function findCity(city) {
@@ -34,26 +39,23 @@ function submitCity(event) {
   findCity(city);
 }
 
-        
 function showFahrenheit(event) {
-    event.preventDefault();
-    let temperatureElement = document.querySelector(".tempNumber");
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".tempNumber");
 
-    celsiusSign.classList.remove("active");
-    fahrenheitSign.classList.add("active");
-    let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-
+  celsiusSign.classList.remove("active");
+  fahrenheitSign.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function showCelsius(event) {
-    event.preventDefault();
-    celsiusSign.classList.add("active");
-    fahrenheitSign.classList.remove("active");
-    let temperatureElement = document.querySelector(".tempNumber");
-    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  event.preventDefault();
+  celsiusSign.classList.add("active");
+  fahrenheitSign.classList.remove("active");
+  let temperatureElement = document.querySelector(".tempNumber");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
-
 
 let celsiusTemperature = null;
 
@@ -63,6 +65,7 @@ cityInfo.addEventListener("submit", submitCity);
 let fahrenheitSign = document.querySelector("#fahrenheit");
 fahrenheitSign.addEventListener("click", showFahrenheit);
 
-let celsiusSign = document.querySelector("#celsius"); celsiusSign.addEventListener("click", showCelsius);
+let celsiusSign = document.querySelector("#celsius");
+celsiusSign.addEventListener("click", showCelsius);
 
 findCity("Kyiv");
