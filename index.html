@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Work: week 2</title>
+    <title>Weather_app</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="workshop_2_FP.css">
+    <link rel="stylesheet" href="src/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
@@ -96,48 +96,6 @@
         </div>
     </div>
     <p class="openCode"><a href="https://github.com/linaSam/weather_project">Open-sourse code</a> by Lina Samoilenko</p>
-    <script>
-
-        // Shows current date
-        
-        let now = new Date();
-        let days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-        ];
-
-        let link = document.querySelector(".date");
-        link.innerHTML = `${days[now.getDay()]} ${now.getHours()}:${now.getMinutes()}`;
-       
-
-        function tempInfo(response) {
-            document.querySelector("#place").innerHTML = response.data.name;
-            document.querySelector("#tempNumber").innerHTML = Math.round(response.data.main.temp);
-        }
-
-        function findCity(city) {
-            let apiKey = "2da922df24791569065ef01a6ccbef01"
-            let apiCity =
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-            axios.get(apiCity).then(tempInfo);
-        }
-
-        function submitCity(event) {
-            event.preventDefault();
-             let city = document.querySelector("#city-input").value;
-            findCity(city);
-        }
-
-        let cityInfo = document.querySelector("#city-form");
-        cityInfo.addEventListener("submit", submitCity);
-
-        findCity("London");
-
-    </script>
+    <script src="src/app.js"></script>
 </body>
 </html>
