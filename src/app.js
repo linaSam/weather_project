@@ -15,10 +15,11 @@ let link = document.querySelector(".date");
 link.innerHTML = `${days[now.getDay()]} ${now.getHours()}:${now.getMinutes()}`;
 
 function tempInfo(response) {
-  document.querySelector("#place").innerHTML = response.data.name;
-  document.querySelector("#tempNumber").innerHTML = Math.round(
-    response.data.main.temp
-  );
+    document.querySelector("#place").innerHTML = response.data.name;
+    document.querySelector("#tempNumber").innerHTML = Math.round(response.data.main.temp);
+    
+    let iconElement = document.querySelector("#big_image");
+    iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 function findCity(city) {
