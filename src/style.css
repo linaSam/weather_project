@@ -32,7 +32,7 @@ form {
   left: 0;
 }
 
-.big_image {
+#big_image {
   font-size: 100px;
   display: block;
   margin-left: auto;
