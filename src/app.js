@@ -11,7 +11,8 @@ let days = [
   "Saturday",
 ];
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
@@ -38,11 +39,17 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
 
 let link = document.querySelector(".date");
 link.innerHTML = `${days[now.getDay()]} ${now.getHours()}:${now.getMinutes()}`;
+
+function showForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "2da922df24791569065ef01a6ccbef01";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function weatherInfo(response) {
   windSpeed = response.data.wind.speed;
@@ -53,6 +60,8 @@ function weatherInfo(response) {
 
   let descriptionElement = document.querySelector(".type_weather");
   descriptionElement.innerHTML = response.data.weather[0].description;
+
+  showForecast(response.data.coord);
 }
 
 function tempInfo(response) {
