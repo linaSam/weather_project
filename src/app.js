@@ -20,6 +20,9 @@ function weatherInfo(response) {
 
   humidityCoefficient = response.data.main.humidity;
   document.querySelector(".humidityInfo").innerHTML = humidityCoefficient;
+
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
 }
 
 function tempInfo(response) {
