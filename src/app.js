@@ -17,6 +17,9 @@ link.innerHTML = `${days[now.getDay()]} ${now.getHours()}:${now.getMinutes()}`;
 function weatherInfo(response) {
   windSpeed = response.data.wind.speed;
   document.querySelector(".windInfo").innerHTML = Math.round(windSpeed);
+
+  humidityCoefficient = response.data.main.humidity;
+  document.querySelector(".humidityInfo").innerHTML = humidityCoefficient;
 }
 
 function tempInfo(response) {
