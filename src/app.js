@@ -69,4 +69,4 @@ let celsiusSign = document.querySelector("#celsius");
 celsiusSign.addEventListener("click", showCelsius);
 
 findCity("Kyiv");
-displayForecast();
+// displayForecast();
