@@ -32,7 +32,6 @@ function tempInfo(response) {
   );
 
   weatherInfo(response);
-  // axios.get(apiCity).then(weatherInfo);
 }
 
 function findCity(city) {
