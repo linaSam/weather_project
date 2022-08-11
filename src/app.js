@@ -14,6 +14,11 @@ let days = [
 let link = document.querySelector(".date");
 link.innerHTML = `${days[now.getDay()]} ${now.getHours()}:${now.getMinutes()}`;
 
+function weatherInfo(response) {
+  windSpeed = response.data.wind.speed;
+  document.querySelector(".windInfo").innerHTML = Math.round(windSpeed);
+}
+
 function tempInfo(response) {
   celsiusTemperature = response.data.main.temp;
   document.querySelector("#place").innerHTML = response.data.name;
@@ -25,6 +30,8 @@ function tempInfo(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  axios.get(apiCity).then(weatherInfo);
 }
 
 function findCity(city) {
@@ -59,6 +66,9 @@ function showCelsius(event) {
 
 let celsiusTemperature = null;
 
+let windSpeed = null;
+let humidityCoefficient = null;
+
 let cityInfo = document.querySelector("#city-form");
 cityInfo.addEventListener("submit", submitCity);
 
@@ -69,4 +79,3 @@ let celsiusSign = document.querySelector("#celsius");
 celsiusSign.addEventListener("click", showCelsius);
 
 findCity("Kyiv");
-// displayForecast();
