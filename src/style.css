@@ -103,3 +103,7 @@ form {
 .openCode {
   margin-left: 120px;
 }
+
+.weather-forecast-image {
+  margin-bottom: 10px;
+}
