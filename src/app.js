@@ -31,7 +31,8 @@ function tempInfo(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
-  axios.get(apiCity).then(weatherInfo);
+  weatherInfo(response);
+  // axios.get(apiCity).then(weatherInfo);
 }
 
 function findCity(city) {
