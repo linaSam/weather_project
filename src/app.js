@@ -21,7 +21,7 @@ function weatherInfo(response) {
   humidityCoefficient = response.data.main.humidity;
   document.querySelector(".humidityInfo").innerHTML = humidityCoefficient;
 
-  let descriptionElement = document.querySelector("#description");
+  let descriptionElement = document.querySelector(".type_weather");
   descriptionElement.innerHTML = response.data.weather[0].description;
 }
 
