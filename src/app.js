@@ -41,7 +41,7 @@ function submitCity(event) {
 
 function showFahrenheit(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector(".tempNumber");
+  let temperatureElement = document.querySelector("#tempNumber");
 
   celsiusSign.classList.remove("active");
   fahrenheitSign.classList.add("active");
