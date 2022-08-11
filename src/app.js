@@ -53,7 +53,7 @@ function showCelsius(event) {
   event.preventDefault();
   celsiusSign.classList.add("active");
   fahrenheitSign.classList.remove("active");
-  let temperatureElement = document.querySelector(".tempNumber");
+  let temperatureElement = document.querySelector("#tempNumber");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
@@ -69,3 +69,4 @@ let celsiusSign = document.querySelector("#celsius");
 celsiusSign.addEventListener("click", showCelsius);
 
 findCity("Kyiv");
+displayForecast();
